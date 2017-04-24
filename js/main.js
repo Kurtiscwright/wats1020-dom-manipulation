@@ -53,9 +53,27 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
+  
 
-    $("#vote").on("click", function() {
-      console.log("Working PartIII!!");
+    $("button.vote").on("click", function() {
+
+      var vote = $(this).data("vote");
+
+      if (vote === "great") {
+        voteCounts.great++;
+      } else {
+        voteCounts.greatest++;
+      }
+
+      voteCounts.total = voteCounts.great + voteCounts.greatest;
+
+      var greatTotal = (voteCounts.great / voteCounts.total) * 100;
+
+      var greatestTotal = (voteCounts.greatest / voteCounts.total) * 100;
+
+      $(".great-progress").attr("style", "width: " + greatTotal + "%");
+
+      $(".greatest-progress").attr("style", "width: " + greatestTotal + "%");
     });
 
     // TODO: Create a function that listens for clicks on the voting buttons and
