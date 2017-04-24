@@ -14,9 +14,11 @@ $( document ).ready(function() {
         total: 0
     };
 
-    $("#login-form").on("click", function() {
-      $("#form-group").slideUp();
-      console.log("I Work!!");
+    $("#login-form .btn-sm").on("click", function() {
+      $("#login-form").hide();
+      var userWelcome = "Greetings, " + userInfo.firstName + " " + userInfo.lastName + "!";
+      $(".user-info").html(userWelcome).fadeIn();
+      //$("user-info").css({"font-size" : "25px"});
     });
     // Place all your Javascript code inside this "document ready" function so
     // it does not run until the DOM is ready for Javascript manipulation.
@@ -28,9 +30,20 @@ $( document ).ready(function() {
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
 
-    $("#").on("click", function() {
-      console.log("Working PartII!!");
+    $(".view-details").on("click", function(event) {
+      var targetEvent = event.target;
+      var targetGrand = targetEvent.parentElement.parentElement;
+      $(targetGrand).find(".details").each(function(index, item){
+        if ( $(item).is(":visible")) {
+          $(element).fadeOut();
+          targetEvent.innerText = "View Details"
+        } else {
+          $(item).fadeIn();
+          targetEvent.innerText = "Hide Details"
+        }
+      });
     });
+
     // TODO: Create a function to listen for clicks on all the "View Details"
     // buttons so that when a user clicks a "View Details" button they see
     // the content contained in the elements with the class "details" in the
