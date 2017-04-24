@@ -13,6 +13,11 @@ $( document ).ready(function() {
         greatest: 0,
         total: 0
     };
+
+    $("#login-form").on("click", function() {
+      $("#form-group").slideUp();
+      console.log("I Work!!");
+    });
     // Place all your Javascript code inside this "document ready" function so
     // it does not run until the DOM is ready for Javascript manipulation.
 
@@ -23,7 +28,9 @@ $( document ).ready(function() {
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
 
-
+    $("#").on("click", function() {
+      console.log("Working PartII!!");
+    });
     // TODO: Create a function to listen for clicks on all the "View Details"
     // buttons so that when a user clicks a "View Details" button they see
     // the content contained in the elements with the class "details" in the
@@ -33,6 +40,10 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
+
+    $("#vote").on("click", function() {
+      console.log("Working PartIII!!");
+    });
 
     // TODO: Create a function that listens for clicks on the voting buttons and
     // looks at the `data-vote` attribute on each button to see what was voted for,
