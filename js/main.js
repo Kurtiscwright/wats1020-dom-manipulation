@@ -14,11 +14,11 @@ $( document ).ready(function() {
         total: 0
     };
 
-    $("#login-form .btn-sm").on("click", function() {
-      $("#login-form").hide();
-      var userWelcome = "Greetings, " + userInfo.firstName + " " + userInfo.lastName + "!";
+    $("#login-form .btn-sm").on("click", function() {  // a function listening for clicks
+      $("#login-form").hide(); //this will hide the login button, email. and password box's
+      var userWelcome = "Greetings, " + userInfo.firstName + " " + userInfo.lastName + "!"; //replaces the above with the user's full name
       $(".user-info").html(userWelcome).fadeIn();
-      //$("user-info").css({"font-size" : "25px"});
+      //$("user-info").css({"font-size" : "25px"});  I wasn't able to figure out how to change the size of the font using the css selector
     });
     // Place all your Javascript code inside this "document ready" function so
     // it does not run until the DOM is ready for Javascript manipulation.
@@ -30,15 +30,15 @@ $( document ).ready(function() {
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
 
-    $(".view-details").on("click", function(event) {
-      var targetEvent = event.target;
-      var targetGrand = targetEvent.parentElement.parentElement;
-      $(targetGrand).find(".details").each(function(index, item){
-        if ( $(item).is(":visible")) {
-          $(element).fadeOut();
+    $(".view-details").on("click", function(event) { //listening for clicks again
+      var targetEvent = event.target;  //setting up witch button is being clicked on among the three
+      var targetGrand = targetEvent.parentElement.parentElement;  //narrowing it down further
+      $(targetGrand).find(".details").each(function(index, item){ //should reveal the hidden information
+        if ( $(item).is(":visible")) {  //suppose to search for if the box has already been clicked so it can be unclicked
+          $(element).fadeOut(); //suppose to re-hide the information
           targetEvent.innerText = "View Details"
         } else {
-          $(item).fadeIn();
+          $(item).fadeIn(); //suppose to reveal the information
           targetEvent.innerText = "Hide Details"
         }
       });
@@ -53,27 +53,20 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
-  
 
-    $("button.vote").on("click", function() {
 
-      var vote = $(this).data("vote");
-
-      if (vote === "great") {
+    $("button.vote").on("click", function() { //listening for clicks in our poll
+      var vote = $(this).data("vote");  //setting vote variable
+      if (vote === "great") { //adding votes to great columon only if great is clicked
         voteCounts.great++;
-      } else {
+      } else { //otherwise greatest will be added to
         voteCounts.greatest++;
       }
-
-      voteCounts.total = voteCounts.great + voteCounts.greatest;
-
-      var greatTotal = (voteCounts.great / voteCounts.total) * 100;
-
-      var greatestTotal = (voteCounts.greatest / voteCounts.total) * 100;
-
-      $(".great-progress").attr("style", "width: " + greatTotal + "%");
-
-      $(".greatest-progress").attr("style", "width: " + greatestTotal + "%");
+      voteCounts.total = voteCounts.great + voteCounts.greatest; //calculating total votes
+      var greatTotal = (voteCounts.great / voteCounts.total) * 100; //getting set to create percentages
+      var greatestTotal = (voteCounts.greatest / voteCounts.total) * 100; //trying to create percentages
+      $(".great-progress").attr("style", "width: " + greatTotal + "%"); //it's happening!
+      $(".greatest-progress").attr("style", "width: " + greatestTotal + "%"); //IT'S ALIVE!!!
     });
 
     // TODO: Create a function that listens for clicks on the voting buttons and
